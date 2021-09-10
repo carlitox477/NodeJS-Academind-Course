@@ -43,7 +43,7 @@
 </h1>
 <p>
     ```
-    const server = http.createServer(rqListener); //especify callback with 2 params (request, response)
+    const server = http.createServer(rqListener); //especify callback with 2 params (request, response), return void
     server.listen(3001) //Especify port
     ```
     You can run server with command <b>node server_file_name.js</b>
