@@ -1,36 +1,48 @@
-<h1>
-    Core modules
-</h1>
-<p>
-    <ul>
-        <li>
-            http: For http requests. It help us launch a server.
-        </li>
-        <li>
-            https: For https requests (https://nodejs.org/api/https.html). It help us launch a SLL server. <a href='https://nodejs.org/api/https.html'>Documentation</a>
-        </li>
-        <li>
-            fs: To manage the file system. <a href='https://nodejs.org/api/fs.html'>Documentation</a>
-        </li>
-        <li>
-            path: It help us to construct paths. It works in any OS. <a href='https://nodejs.org/api/path.html'>Documentation</a>
-        </li>
-        <li>
-            os: It help us with the OS. <a href='https://nodejs.org/api/os.html'>Documentation</a>
-        </li>
-    </ul>
-</p>
+<section>
+    # Creating a Node Server
+    ## Core modules
+    <p>
+        <ul>
+            <li>
+                http: For http requests. It help us launch a server.
+            </li>
+            <li>
+                https: For https requests (https://nodejs.org/api/https.html). It help us launch a SLL server. <a href='https://nodejs.org/api/https.html'>Documentation</a>
+            </li>
+            <li>
+                fs: To manage the file system. <a href='https://nodejs.org/api/fs.html'>Documentation</a>
+            </li>
+            <li>
+                path: It help us to construct paths. It works in any OS. <a href='https://nodejs.org/api/path.html'>Documentation</a>
+            </li>
+            <li>
+                os: It help us with the OS. <a href='https://nodejs.org/api/os.html'>Documentation</a>
+            </li>
+        </ul>
+    </p>
+    ## How to import a module?
+    <p>
+        For a module in a local folder:
+        ```
+        const module_path='./path'
+        const module = require(module_path)
+        ```
+    </p>
+    ## NodeJS Program Lifecycle
+    <p>
+    Node use 1 thread to recive request, but it manage them with multiple threads.
+    <img src=''>
+    You can end the event loop executing the line (in the js file): <b>process.exit()</b>
+    </p>
+    
+</section>
+
+
 
 <h1>
-    How to import a module?
+    
 </h1>
-<p>
-    For a module in a local folder:
-    ```
-    const module_path='./path'
-    const module = require(module_path)
-    ```
-</p>
+
 <p>
     For a global module:
     ```
@@ -49,4 +61,8 @@
     You can run server with command <b>node server_file_name.js</b>
 <p>
 
-
+<h1>
+NodeJS program Lifecycle
+</h1>
+<p>
+<p>
