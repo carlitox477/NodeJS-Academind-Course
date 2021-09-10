@@ -43,3 +43,13 @@ Push CTRL + C in the console where node server is running.
 * method
 * headers: has meta information
 
+## Sending responses
+The response object can be use to send responses.
+
+It has some useful methods, as:
+* setHeader(String, String): We can use it to describe metadata we want to send.
+* write(any): It allow us to write data we want to send.
+* end(): We send back data to the client, we can't write more data
+
+## HTTP request and reponse information
+Look for <a href= 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers'>documentation</a>
