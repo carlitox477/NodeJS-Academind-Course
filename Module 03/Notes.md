@@ -53,3 +53,13 @@ It has some useful methods, as:
 
 ## HTTP request and reponse information
 Look for <a href= 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers'>documentation</a>
+
+## Routing Request
+On the createServer callback you can use a switch to manage requests
+
+### Form attributes
+* action: URL where the form data will be sent
+* method: Define type of request that will be sent
+
+### Input attributes
+* name: to identify data in the request
