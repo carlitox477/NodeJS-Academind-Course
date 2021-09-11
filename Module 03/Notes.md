@@ -69,3 +69,29 @@ You can modify the response and set the new location in the header with method:
 res.setHeader('Location','/')
 ```
 When the response invokes the end() method, tthe user will be redirected
+
+## Parsing request bodies
+### How NodeJS manage the incomming requests?
+![Streams & Buffers](/img/StreamsAndBuffers.png)
+
+To use body data we need to:
+* Manage the streamed data with the on('data', callback) method. Usually like this:
+```javascript
+const body = []
+
+//Node ejecuta esto hasta que termina de recibir la data
+req.on('data', (chunk) => {
+    body.push(chunk)
+})
+```
+* Once the stremed data is recived, we need to put in in a buffer and convert it depending on its format. For example:
+```javascript
+req.on('end',()=>{
+    const parsedBody = Buffer.concat(body).toString()
+    //There coould be more transformation, or even other.
+    // Actions ...
+    })
+```
+
+
+

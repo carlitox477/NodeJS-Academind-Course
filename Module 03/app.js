@@ -8,13 +8,29 @@ const rqListener = (req, res) =>{
     if(url=== '/'){
         res.write('<html>')
         res.write('<head><title>Enter message</title></head>')
-        res.write('<body><form action="/message" method="POST" name="message"><input type="text"><button type="submit">Send</button></form></body>')
+        res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></body>')
+        //res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></body>');
         res.write('</html>')
         return res.end() //to end 
     }
-    if(url='/message' && method==='POST'){
-        //Create new file
-        fs.writeFileSync('message.txt', 'DUMMY')
+    if(url==='/message' && method==='POST'){
+        const body = []
+        console.log("message and post")
+
+        //Node ejecuta esto hasta que termina de recibir la data
+        req.on('data', (chunk) => {
+            console.log("message and post: on")
+            console.log(chunk)
+            body.push(chunk)
+        })
+        req.on('end',()=>{
+            console.log("message and post: end")
+            const parsedBody = Buffer.concat(body).toString()
+            console.log(parsedBody)
+            const message = parsedBody.split('=')[1];
+            fs.writeFileSync('message.txt', message) //Create new file
+            console.log(message)
+        })
         res.statusCode=302
         res.setHeader('Location','/')
         return res.end()
@@ -25,7 +41,7 @@ const rqListener = (req, res) =>{
     res.write('<body><h1>Hello from NodeJS</h1></body>')
     res.write('</html>')
     res.end()
-    console.log(req)
+    //console.log(req)
     
     
 }
