@@ -2,11 +2,11 @@
 
 ## Creating a NodeJS server
 ### Core modules
-* http: For http requests. It help us launch a server.
-* https: For https requests (https://nodejs.org/api/https.html). It help us launch a SLL server. <a href='https://nodejs.org/api/https.html'>Documentation</a>
-* fs: To manage the file system. <a href='https://nodejs.org/api/fs.html'>Documentation</a>
-* path: It help us to construct paths. It works in any OS. <a href='https://nodejs.org/api/path.html'>Documentation</a>
-* os: It help us with the OS. <a href='https://nodejs.org/api/os.html'>Documentation</a>
+* http: For http requests. It help us launch a server. [Documentation](https://nodejs.org/api/http.html).
+* https: For https requests. It help us launch a SLL server. [Documentation](https://nodejs.org/api/https.html)
+* fs: To manage the file system. [Documentation](https://nodejs.org/api/fs.html).
+* path: It help us to construct paths. It works in any OS. [Documentation](https://nodejs.org/api/path.html).
+* os: It help us with the OS. [Documentation](https://nodejs.org/api/os.html).
 
 ### How to import a module?
 For a module in a local folder:
@@ -29,8 +29,7 @@ You can run server with command <b>node server_file_name.js</b>
 
 ## NodeJS Program Lifecycle
 Node use 1 thread to recive request, but it manage them with multiple threads.
-
-<img src='img/NodeJs_LyfeCycle.png'/>
+![Node Lyfe Cycle](/img/NodeJs_LyfeCycle.png)
 
 You can end the event loop executing the line (in the js file): <b>process.exit()</b>
 
@@ -52,7 +51,7 @@ It has some useful methods, as:
 * end(): We send back data to the client, we can't write more data
 
 ## HTTP request and reponse information
-Look for <a href= 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers'>documentation</a>
+Look for [documentation]('https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers')
 
 ## Routing Request
 On the createServer callback you can use a switch to manage requests
@@ -63,3 +62,10 @@ On the createServer callback you can use a switch to manage requests
 
 ### Input attributes
 * name: to identify data in the request
+
+## Redirecting requests
+You can modify the response and set the new location in the header with method:
+```javascript
+res.setHeader('Location','/')
+```
+When the response invokes the end() method, tthe user will be redirected
