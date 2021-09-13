@@ -23,18 +23,23 @@ const rqListener = (req, res) =>{
             console.log(chunk)
             body.push(chunk)
         })
-        req.on('end',()=>{
+        
+        return req.on('end',()=>{
             console.log("message and post: end")
             const parsedBody = Buffer.concat(body).toString()
             console.log(parsedBody)
             const message = parsedBody.split('=')[1];
-            fs.writeFileSync('message.txt', message) //Create new file
-            console.log(message)
+            fs.writeFile('message.txt', message, (err)=>{ //Create new file
+                res.statusCode=302
+                res.setHeader('Location','/')
+                res.end()
+                return 
+            }) 
+            //console.log(message)
         })
-        res.statusCode=302
-        res.setHeader('Location','/')
-        return res.end()
+        
     }
+    
     res.setHeader('Content-Type', 'text/html')
     res.write('<html>')
     res.write('<head><title>My first page</title></head>')

@@ -96,3 +96,8 @@ req.on('end',()=>{
 ## Understanding event driven code execution
 The on method establishes callback for the event that was specified. Is like an event listener. 
 
+## Blocking and non-blocking code
+```javascript
+fs.writeFileSync('file_name',file_data) //Blocking
+fs.writeFile('file_name',file_data, callback) //Non-blocking, the callback can have an error parameter
+```
