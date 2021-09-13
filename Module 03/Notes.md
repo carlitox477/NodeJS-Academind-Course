@@ -84,7 +84,7 @@ req.on('data', (chunk) => {
     body.push(chunk)
 })
 ```
-* Once the stremed data is recived, we need to put in in a buffer and convert it depending on its format. For example:
+* Once the streamed data is recived, we need to put in in a buffer and convert it depending on its format. For example:
 ```javascript
 req.on('end',()=>{
     const parsedBody = Buffer.concat(body).toString()
@@ -93,5 +93,6 @@ req.on('end',()=>{
     })
 ```
 
-
+## Understanding event driven code execution
+The on method establishes callback for the event that was specified. Is like an event listener. 
 
