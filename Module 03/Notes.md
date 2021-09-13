@@ -101,3 +101,46 @@ The on method establishes callback for the event that was specified. Is like an 
 fs.writeFileSync('file_name',file_data) //Blocking
 fs.writeFile('file_name',file_data, callback) //Non-blocking, the callback can have an error parameter
 ```
+
+## Looking behind the scenes
+Node use a single JS thread
+![How NodeJS works](/img/How_NodeJS_works.png)
+
+### Event loop
+![Event Loop](/img/How_Event_Loop_works.png)
+* It keeps the node process running
+* It manage the callbacks
+
+## Using the module system
+### How to export modules?
+```javascript
+//Option 1: A classic single module exportation
+const text = 'test'
+const fun = () =>{ return 'fun'}
+module.exports = fun
+
+// Option 2: Multiple modules exportation using an explicit JSON
+module.exports = {
+    fun: fun,
+    text: text
+}
+
+// Option 3: Multiple modules exportation using an implicit JSON
+module.exports.fun = fun
+module.exports.text = text
+
+// Option 4: Multiple modules exportation using an implicit JSON with node abreviation
+exports.fun = fun
+exports.text = text
+```
+
+
+### How to import a module?
+```javascript
+//Option 1: A classic single file module importation
+const module_path= 'module_path/module_file'
+const mod = require(module_path)
+
+// Option 2: Multiple modules importation
+const mod = require(module_path).specific_module_name
+```

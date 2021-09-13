@@ -27,13 +27,13 @@ const rqListener = (req, res) =>{
         return req.on('end',()=>{
             console.log("message and post: end")
             const parsedBody = Buffer.concat(body).toString()
-            console.log(parsedBody)
-            const message = parsedBody.split('=')[1];
+            
+            const message = parsedBody.split('=')[1].replaceAll("+",' ');
             fs.writeFile('message.txt', message, (err)=>{ //Create new file
                 res.statusCode=302
                 res.setHeader('Location','/')
-                res.end()
-                return 
+                return res.end()
+                
             }) 
             //console.log(message)
         })
