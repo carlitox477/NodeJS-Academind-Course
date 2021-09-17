@@ -8,5 +8,8 @@
     "start": "node app.js"
   },
   "author": "Carlos Adolfo Amarante",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
 }
