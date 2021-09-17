@@ -1,11 +1,11 @@
 # Module 4 requirements
-Install nodemon develompente dependency, add the new folder to the *.gitingore* file
+Install nodemon develompente dependency, add the new folder to the *.gitingore* file. This dependency allow node to update its codes in development whener a file is updated without re running manually the server
 
 # Node package manager (NPM)
 NPM is usuful to manage scripts, initialize node project and install 3° parties libraries.
 
 Commands:
-* **npm init**: It creates a package in the current folder. It'll ask for the next package's data:
+* `npm init`: It creates a package in the current folder. It'll ask for the next package's data:
     * name: Package's name
     * description: Package description
     * entrie point: 
@@ -43,3 +43,8 @@ Installing dependencies will add data to the *package.json* file. For instance, 
 }
 ```
 To the *package.json* file. This means that, if we run `npm install`, the nodemon package (version 2.0.12) will be installed too.
+
+### Using nodemon package
+1. Install nodemon package
+1. Modify start script from *package.json* file from `node app.js` to `nodemon app.js`
+1. Just run `npm start` to run the server with nodemon
