@@ -29,7 +29,7 @@ You can run server with command <b>node server_file_name.js</b>
 
 ## NodeJS Program Lifecycle
 Node use 1 thread to recive request, but it manage them with multiple threads.
-![Node Lyfe Cycle](/img/NodeJs_LyfeCycle.png)
+![Node Lyfe Cycle](img/NodeJs_LifeCycle.png)
 
 You can end the event loop executing the line (in the js file): <b>process.exit()</b>
 
@@ -72,7 +72,7 @@ When the response invokes the end() method, tthe user will be redirected
 
 ## Parsing request bodies
 ### How NodeJS manage the incomming requests?
-![Streams & Buffers](/img/StreamsAndBuffers.png)
+![Streams & Buffers](img/StreamsAndBuffers.png)
 
 To use body data we need to:
 * Manage the streamed data with the on('data', callback) method. Usually like this:
@@ -104,10 +104,10 @@ fs.writeFile('file_name',file_data, callback) //Non-blocking, the callback can h
 
 ## Looking behind the scenes
 Node use a single JS thread
-![How NodeJS works](/img/How_NodeJS_works.png)
+![How NodeJS works](img/How_NodeJS_works.png)
 
 ### Event loop
-![Event Loop](/img/How_Event_Loop_works.png)
+![Event Loop](img/How_Event_Loop_works.png)
 * It keeps the node process running
 * It manage the callbacks
 
