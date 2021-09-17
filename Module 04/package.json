@@ -1,0 +1,12 @@
+{
+  "name": "nodejs-academind-module04",
+  "version": "1.0.0",
+  "description": "Notes and progress from module 4 Academind NodeJS course",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Carlos Adolfo Amarante",
+  "license": "ISC"
+}
