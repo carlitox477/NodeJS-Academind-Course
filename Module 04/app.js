@@ -1,6 +1,5 @@
 //To import a module
 const http = require('http')
-const fs = require('fs')
 const rqListener=require('./routes')
 
 const server = http.createServer(rqListener); //especify callback
