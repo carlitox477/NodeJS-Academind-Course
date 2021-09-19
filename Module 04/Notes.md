@@ -31,7 +31,7 @@ Running `npm start` will be the same than running `node app.js`
 ## Installing 3° parties packages
 The npm repository is a cloud repository which contains 3° parties packages that we can install by aliases. For instance: express, react, etc. We can install a package using the command `npm install alias-package-name_or_URL`. The `install` command have some useful flags like:
 * `--save-dev`: install a package as a development dependency (the package will be used just during development)
-* `--save`: install a package as
+* `--save`: install a package as a production dependency for the current project
 * `-g`: the package wont' be installed just in the current project, it will be installed in the whole computer to be used anywhere
 
 Installing dependencies will add data to the *package.json* file. For instance, if we install nodemon as a development dependency, it will be added:
@@ -74,6 +74,7 @@ To the *package.json* file. This means that, if we run `npm install`, the nodemo
     //...
 }
 ```
-* ![More information about Node.js debbugging in VS code]()
+* [More information about Node.js debugging in VS code](https://code.visualstudio.com/docs/nodejs/nodejs-debugging) and for general node debugging you can check this [link](https://nodejs.org/en/docs/guides/debugging-getting-started/)
+* Variables values can be changed during runing time if we use the debugger.
 
 About the second point, it may not be recommend it because we don't want to debug always.
