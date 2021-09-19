@@ -48,3 +48,32 @@ To the *package.json* file. This means that, if we run `npm install`, the nodemo
 1. Install nodemon package
 1. Modify start script from *package.json* file from `node app.js` to `nodemon app.js`
 1. Just run `npm start` to run the server with nodemon
+
+# Types of error
+* Syntax errors: Easy to find with code editor integrated tools or running tools.
+* Runtime errors: code that breaks when it runs.
+* Logical errors: Code that doesn't have syntax nor runtime errors but doesn't behave as we want. Reducing the zone to search the errron and use a debugger can be useful.
+
+## Visual studio debugger
+* Shortcut: `F5`
+* Change something in our code won't restart our code unless we add the next configuration to our project (going to `Run`--> `Add configuration`, selecting node):
+```json
+{
+    //...
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/file_name.js",
+            "restart": true,
+            "runtimeExecutable": "nodemon", //if we use nodemon, otherwise node. Using nodemon will require install it locally
+            "console": "integratedTerminal"
+        }
+    ]
+    //...
+}
+```
+* ![More information about Node.js debbugging in VS code]()
+
+About the second point, it may not be recommend it because we don't want to debug always.
