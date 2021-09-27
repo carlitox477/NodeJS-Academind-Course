@@ -1,8 +1,18 @@
 //To import a module
 const http = require('http')
 const express = require('express')
-const rqListener=require('./routes')
+const app = express()
 
-const server = http.createServer(rqListener); //especify callback
-server.listen(3001) //Especify port
-//run server with command node server_file_name.js
+app.use((req, res, next) =>{
+    console.log('First middleware')
+    next() //Next allow us to go to the next middleware
+    console.log('First middleware: doing more things')
+})
+
+app.use((req, res, next) =>{
+    console.log('Second middleware')
+    res.send("<h1>Hello from express!</h1>")
+})
+
+//const server = http.createServer(app);
+app.listen(3001)
