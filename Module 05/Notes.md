@@ -21,10 +21,27 @@ This express app is a valid request handler, so we can use it in the function `c
 
 ## Middleware
 * Concept similar to pipeline, using functions.
-* Middlewares are added one after other and can't be skipped. A middleware must sent a response or go to the next middleware
+* Middlewares that are added for the same path one after other can't be skipped. A middleware must sent a response or go to the next middleware
+* More specifict middlewares should go first
 
 ### Sending responses
-We can use *setHeader* and *write*, however, we can also use the *send* function
+We can use *setHeader* and *write*, however, we can also use the *send* function. To send a html we will need to use the *sendFile* function and the path module like this:
+```javascript
+const path = require('path')
+
+app_or_router.get("/",(req, res, next) =>{
+    res.sendFile(path.join(__dirname, '../','views','file.html'))
+    //each join argument is a folder except from the last one which is the file name.
+    //__dirname is aglobal variable for the current project folder
+    //If we construct the path manually it may not work on other OS
+})
+```
+Other way to get the project path is with the next code:
+```javascript
+const path = require('path')
+module.exports = path.dirname(require.main.filename)
+```
+Which is usually in a separate file, in a folder called util
 
 
 ### Use function
@@ -50,3 +67,86 @@ app.use((req, res, next) =>{
 const server = http.createServer(app);
 server.listen(3001)
 ```
+If it includes a path, the URL should start with it to be triggered. For instance:
+
+```javascript
+app.use("/should_start_with_this",(req, res, next) =>{
+    console.log('Second middleware')
+}) //'/should_start_with_this' and '/should_start_with_this/more path' will trigger this function
+```
+
+Also, if the use method use a router, the path used in the main app acts as a prefix. For instance, in the main expres app:
+```javascript
+//Main app file
+app.use("/prefix",router)
+```
+
+```javascript
+//router file
+router.use("/url", callback)
+```
+We trigger the callback only if the URL is **/prefix/url**
+
+
+### get and post functions
+Same as *use* function, but only triggered by **GET** and **POST** request. They require an exact path match. We can use both methods for the same path as long as the method is different
+
+### request redirect
+Use the function *redirect(URL)* for a Response object
+
+### Parse body
+Use the package **body-parser**, this may be alredy included in express, it relays on the current express version.
+
+```javascript
+//...
+// to install it for developing use npm install --save body-parser
+const bodyParser = require('body-parser')
+
+app.use(bodyParser.urlencoded({
+    extended: false; //https://stackoverflow.com/questions/29136374/what-the-difference-between-qs-and-querystring/50199038
+    // true use qs, false use querystring
+}))
+//Act as a middleware that always call next but first parse the body
+```
+
+### Send a 404 error page
+Whithout a file:
+```javascript
+//At last of the node app
+app.use((req, res, next)=>{
+    res.status(404).send("<h1>Page not found</h1>")
+})
+```
+
+With a file
+
+# Routing
+## Route convention
+All routing code should go in a folder called **routes**.
+
+## Express modularization
+We use the router in a separate file like this:
+
+```javascript
+const router = express.Router()
+
+// router added code
+
+module.exports = router
+```
+
+On **router** we can use the methods *get* and *post* as we used in the main app.
+
+To be able to use the router we should import it into de main app file and use it.
+
+```javascript
+const routes = require('.routes/router_path/routes.js')
+app.use(routes)
+```
+
+# public convention
+A folder called *public* will contain all the files that the user will have access. For instance: css code. To use these files we need to serve them statically, meaning we need to serve the public folder statically. This can be done by serverving it in the main app file like:
+```javascript
+app.use(express.static(path.join(project_route_folder, 'public')))
+```
+IMPORTANT: All the files and folder in, in this particular case, *public* will be added, NOT the public folder. Meaning that we won't be able to access to public, instead we will have direct access to its files and folder.
