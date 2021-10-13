@@ -9,6 +9,7 @@ const shopRoutes = require('./routes/shop.js')
 const page404Routes = require('./routes/404.js')
 
 const app = express()
+app.set('view engine', 'pug')
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname, 'public')))
