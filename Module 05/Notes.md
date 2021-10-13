@@ -19,7 +19,7 @@ const express_app=express()
 ```
 This express app is a valid request handler, so we can use it in the function `createServer` for the `http` module
 
-## Middleware
+## Middleware concept
 * Concept similar to pipeline, using functions.
 * Middlewares that are added for the same path one after other can't be skipped. A middleware must sent a response or go to the next middleware
 * More specifict middlewares should go first
@@ -42,7 +42,6 @@ const path = require('path')
 module.exports = path.dirname(require.main.filename)
 ```
 Which is usually in a separate file, in a folder called util
-
 
 ### Use function
 **use** allow us to add a middleware function. The function given as parameter is executed for each request and it must have 3 parameters:
@@ -92,7 +91,7 @@ We trigger the callback only if the URL is **/prefix/url**
 Same as *use* function, but only triggered by **GET** and **POST** request. They require an exact path match. We can use both methods for the same path as long as the method is different
 
 ### request redirect
-Use the function *redirect(URL)* for a Response object
+Use the function *res.redirect(URL)* for a Response object
 
 ### Parse body
 Use the package **body-parser**, this may be alredy included in express, it relays on the current express version.
