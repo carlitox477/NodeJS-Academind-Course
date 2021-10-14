@@ -55,9 +55,17 @@ router.get("/",(req, res, next) =>{
 * Conditional class name can be used in parentesis, where the attributes given by parameters can be specified just buy its name
 
 ## Handlebars
-* It needs to be importes
+* Documentation [here](https://handlebarsjs.com/)
+* It needs to be imported
 ```javascript
+const layoutsDir= 'layout_folder' //If it is differente to views/layouts/
+const defaultLayout= 'default-layout'
 const expressHbs = require('express-handlebars')
-app.engine('handlebars', expressHbs()) //To assign a name to handlebars engine in the current code
+app.engine('hbs', expressHbs( {
+    extname: 'hbs',
+    layoutDir: layoutsDir,
+    defaultLayout: defaultLayout
+})) //To assign a name to handlebars engine in the current code
 app.set('view engine', 'handlebars')
 ```
+* To add html from other file to the default layout, in this other file we only need to put the html we are going to add, and put *{{{body}}}* in the layout html where we want to add the content

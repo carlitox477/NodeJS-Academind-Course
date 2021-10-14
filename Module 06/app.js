@@ -10,7 +10,7 @@ const shopRoutes = require('./routes/shop.js')
 const page404Routes = require('./routes/404.js')
 
 const app = express()
-app.engine('hbs',expressHbs())
+app.engine('hbs', expressHbs({extname: 'hbs', defaultLayout: 'main-layout'}))
 app.set('view engine', 'hbs')
 
 app.use(bodyParser.urlencoded({extended: false}))
