@@ -52,3 +52,12 @@ router.get("/",(req, res, next) =>{
         block content
             p Hello World!
     ```
+* Conditional class name can be used in parentesis, where the attributes given by parameters can be specified just buy its name
+
+## Handlebars
+* It needs to be importes
+```javascript
+const expressHbs = require('express-handlebars')
+app.engine('handlebars', expressHbs()) //To assign a name to handlebars engine in the current code
+app.set('view engine', 'handlebars')
+```

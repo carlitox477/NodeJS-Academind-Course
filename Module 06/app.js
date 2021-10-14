@@ -3,13 +3,15 @@ const http = require('http')
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
+const expressHbs= require('express-handlebars')
 
 const adminData = require('./routes/admin.js')
 const shopRoutes = require('./routes/shop.js')
 const page404Routes = require('./routes/404.js')
 
 const app = express()
-app.set('view engine', 'pug')
+app.engine('hbs',expressHbs())
+app.set('view engine', 'hbs')
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname, 'public')))
