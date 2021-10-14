@@ -39,4 +39,16 @@ router.get("/",(req, res, next) =>{
 })
 
 ```
-* 
+* Inheritance is permited. This allow us to create a base template and add more features
+    * First you create a basic template, and you name block where you can add content. Example:
+    ```pug
+        body
+            main
+                block content
+    ```
+    And the in a son you can import the layout by its file name
+    ```pug
+        extends layout-folder/layout-file-name.pug
+        block content
+            p Hello World!
+    ```

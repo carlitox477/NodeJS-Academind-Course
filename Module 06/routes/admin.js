@@ -9,7 +9,7 @@ router.get("/add-product",(req, res, next) =>{
     //console.log("Add product middleware")
     //res.send("<h1>Add product</h1><form action='/admin/product' method='POST'><label>Product name: </label><input type='text' name='title'/><button>Add product</button></form>")
     //res.sendFile(path.join(rootDir(), 'views','add-product.html'))
-    res.render("add-product",{docTitle: "Add product"})
+    res.render("add-product",{docTitle: "Add product", path:"/admin/add-product"})
 })
 
 router.post("/add-product",(req, res, next) =>{
