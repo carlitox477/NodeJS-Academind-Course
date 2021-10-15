@@ -75,3 +75,7 @@ app.set('view engine', 'handlebars')
 * To add a propertie send by paramaeter: ```<%= prop %>```
 * To add conditional content ```<%  if prop === true %>```
 * You can use JS code by sourrender the JS specific code with **<%** and **%>**
+* To include external EJS code you need to use the next sintax
+```ejs
+<%- include(folder/file.ejs)%>
+```
