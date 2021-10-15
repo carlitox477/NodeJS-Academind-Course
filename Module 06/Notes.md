@@ -69,3 +69,9 @@ app.engine('hbs', expressHbs( {
 app.set('view engine', 'handlebars')
 ```
 * To add html from other file to the default layout, in this other file we only need to put the html we are going to add, and put *{{{body}}}* in the layout html where we want to add the content
+
+## EJS
+* To use it we just need to set the view engine
+* To add a propertie send by paramaeter: ```<%= prop %>```
+* To add conditional content ```<%  if prop === true %>```
+* You can use JS code by sourrender the JS specific code with **<%** and **%>**
