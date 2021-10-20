@@ -9,6 +9,6 @@ router.get("/checkout",shopControler.getCheckout)
 router.get("/orders",shopControler.getOrders)
 
 //Dinamic routes
-router.get("/products/:productId",shopControler.getProducts)
+router.get("/products/:productId",shopControler.getProduct)
 
 module.exports = router

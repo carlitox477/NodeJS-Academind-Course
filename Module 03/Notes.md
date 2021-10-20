@@ -31,8 +31,6 @@ You can run server with command <b>node server_file_name.js</b>
 Node use 1 thread to recive request, but it manage them with multiple threads.
 ![Node Lyfe Cycle](img/NodeJs_LifeCycle.png)
 
-
-
 A node program runs an event loop that keeps on running as long as there is work to do. This means as long as there are event listeners registered. For instance, an event listener that is usually registered is the request listener (when we create a server). When the server starts listening, it registers this method.
 
 You can end the listening event by executing the line (in the js file): <b>process.exit()</b>
