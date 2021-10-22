@@ -17,3 +17,26 @@ router.get("/books/:idBook", movieControler.getMovieDetails) //this too
 ```
 
 The data pass by paramater will be passed in the request object and we can use it with ```req.params.paramName```
+
+## Pass local data in EJS file
+If we had a loop, and ejs code we are using that require local data from this loop we must pass it in a JSON like second parameter of the include function.
+```ejs
+    <% for (let product of prods) { %>
+        <article class="card product-item">
+            <%- include('../includes/product-detail.ejs',{product: product}) %>
+        </article>
+    <% } %>
+```
+
+## Query parameters
+These are the ones that we send by URL like *localhost/admin/edit-product/1?queryParam1=true&queryParam2=false*. We can access them in express by just accesing the query object from the request
+```javascript
+const param1 =req.query.queryParam1
+```
+All the paramaters are string, sometimes we will need to cast them
+
+## Summary
+* Dynamic Routing
+    * You can pass dynamic path segments by adding a ":" to the Express router path
+    * The name you add after ":" is the name by which you can extract the data on *req.params*
+    * Optional (query) parameter can also be passed (```?param=value&b=2```) and extracted (```req.query.myParam```) 

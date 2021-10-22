@@ -3,39 +3,58 @@ const Product = require('../models/product')
 //Admin pages
 //Add product
 exports.getAddProductPage = (req, res, next)=>{
-    res.render("admin/add-product",{
+    res.render("admin/edit-product",{
         pageTitle: "Add product",
         path:"/admin/add-product",
-        activeAddProduct: true}
-        )
+        activeAddProduct: true,
+        product: null
+    })
 }
 
 exports.postAddProduct = (req, res, next)=>{
-    console.log(req.body.imgURL)
-    const product=new Product(req.body.name,
+    const product=new Product(null, req.body.title,
         req.body.description,
         parseFloat(req.body.price).toFixed(2),
-        req.body.imgURL)
+        req.body.imageUrl)
     product.save()
     res.redirect("/")
 }
 
-//Edit Added Product
-exports.getEditAddedProductPage = (req, res, next)=>{
-    res.render("admin/edit-added-product",{
-        pageTitle: "Edit added product",
-        path:"/admin/edit-added-product",
-        activeAddProduct: true}
+//Edit product
+exports.getEditProductPage = (req, res, next)=>{
+    Product.findById(req.params.productId,(product)=>{
+        if(product){
+            res.render("admin/edit-product",{
+                product: product,
+                pageTitle: "Edit "+product.name,
+                path:"/admin/products",
+                activeAddProduct: true}
+                )
+        }else{
+            res.redirect('/404')
+        }
+        
+    })
+}
+
+exports.postEditProduct = (req, res, next)=>{
+    const product =new Product(req.body.productId,
+        req.body.title,
+        req.body.description,
+        req.body.price,
+        req.body.imageUrl
         )
-}
-
-exports.postEditAddedProductPage = (req, res, next)=>{
-    const product=new Product(req.body.title)
     product.save()
-    res.redirect("/")
+    res.redirect("/admin/products")
 }
 
-// Product page
+exports.postDeleteProduct = (req, res, next)=>{
+    //Product.deleteById(req.params.productId)
+    Product.deleteById(req.query.productId)
+    res.redirect("/admin/products")
+}
+
+// Products page
 exports.getProductsPage = (req, res, next) =>{
     Product.fetchAll((products)=>{
         res.render('admin/products', {
