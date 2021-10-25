@@ -32,3 +32,25 @@ What is SQL database?
 | Horizontal scaling is difficult / impossible. Vertical scaling is possible |    Both horizontal and vertical scaling is possible    |
 |     Limitations for lots of (thousands) read & write queries per second    |     Great performace for mass read & write requests    |
 
+# MySQL
+* [Official Website](https://www.mysql.com/)
+* Install the lates MySQL server and MySQL workbench usind the custom installation
+
+# Interact with SQL from node
+* Install mysql2 package: ``npm install --save mysql2````
+* We can create a connection each time we need to do a query (which we must close after it is done) or we can use a [connection pool](https://www.npmjs.com/package/mysql2#using-connection-pools) to imporve time.
+```javascript
+const mysql = require('mysql2')
+
+const pool = mysql.createPool({
+    host: 'hostname',
+    user: 'database-username',
+    database: 'schema-name',
+    password: 'user-password'
+})
+```
+* For a better manage of the pool we can use pool promises to begin and end a connection in a single line. For instance:
+```javascript
+const promisePool = pool.promise()
+const data = await promisePool.query("SELECT *")
+```
