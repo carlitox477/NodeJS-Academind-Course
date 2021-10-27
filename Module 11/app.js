@@ -5,8 +5,6 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const sequelize= require("./util/database") 
 
-
-
 const adminData = require('./routes/admin.js')
 const shopRoutes = require('./routes/shop.js')
 const page404Routes = require('./routes/404.js')

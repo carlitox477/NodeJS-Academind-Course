@@ -1,5 +1,5 @@
 # Sequelize
-* It is a an object-relational maping (ORM) library.
+* It is a an object-relational mapping (ORM) library.
 * It allow us to generate models (tables), instances, queries and associations.
 * Installation: ```npm install --save sequelize``` (It needs mysql2 package)
 * Using sequelize
