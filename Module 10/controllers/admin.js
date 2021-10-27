@@ -12,7 +12,10 @@ exports.getAddProductPage = (req, res, next)=>{
 }
 
 exports.postAddProduct = (req, res, next)=>{
-    const product=new Product(null, req.body.title,
+    
+
+    const product=new Product(null,
+        req.body.title,
         req.body.description,
         parseFloat(req.body.price).toFixed(2),
         req.body.imageUrl)

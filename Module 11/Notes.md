@@ -55,3 +55,34 @@ SequelizeModel.create(
         //...
     })
 ```
+
+## Updating value
+We need to obtain the isntance from the DB, update its attributes and save it
+```javascript
+// Product is a sequelize model
+Product.findByPk(req.body.productId).then(product =>{
+        product.title=req.body.title;
+        product.description=req.body.description;
+        product.price=req.body.price;
+        product.imageUrl=req.body.imageUrl;
+        return product.save()
+    }).then(result =>{
+        console.log("Updated product")
+        res.redirect("/admin/products")
+    }).catch(err=>{
+        console.log(err)
+    })
+```
+
+## Updating value
+We need to obtain the instance from the DB, then call the destroy method
+```javascript
+// Product is a sequelize model
+Product.findByPk(req.body.productId).then(product =>{
+        return product.destroy()
+    }).then(result =>{
+        res.redirect("/admin/products")
+    }).catch(err=>{
+        console.log(err)
+    })
+```
