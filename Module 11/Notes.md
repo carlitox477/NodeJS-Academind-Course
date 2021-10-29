@@ -86,3 +86,7 @@ Product.findByPk(req.body.productId).then(product =>{
         console.log(err)
     })
 ```
+
+## Creating relations
+On the pap file, before calling the sync method, we should create the association.
+[Here](https://sequelize.org/master/manual/assocs.html) how to do it.

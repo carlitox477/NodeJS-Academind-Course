@@ -14,15 +14,15 @@ exports.getAddProductPage = (req, res, next)=>{
 
 exports.postAddProduct = (req, res, next)=>{
     //DONE
-    Product.create(
-        {
-            title: req.body.title,
-            price: parseFloat(req.body.price).toFixed(2),
-            imageUrl: req.body.imageUrl,
-            description: req.body.description
-        }
-    ).then(result =>{
-        console.log(result)
+    
+    req.user.createProduct({
+        title: req.body.title,
+        price: parseFloat(req.body.price).toFixed(2),
+        imageUrl: req.body.imageUrl,
+        description: req.body.description,
+        userId: req.user.id
+    }).then(result =>{
+        //console.log(result)
         res.redirect("/")
     }).catch(err =>{
         console.log(err)
@@ -74,7 +74,9 @@ exports.postDeleteProduct = (req, res, next)=>{
 // Products page
 exports.getProductsPage = (req, res, next) =>{
     //DONE
-    Product.findAll().then(products =>{
+    Product.findAll({where: {
+        userId: req.user.id
+    }}).then(products =>{
         res.render('admin/products', {
             prods: products,
             pageTitle: 'Admin products',
